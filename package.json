@@ -1,0 +1,14 @@
+{
+  "name": "testcafe_workshop",
+  "version": "1.0.0",
+  "description": "Testcafe project",
+  "main": "index.js",
+  "scripts": {
+    "Test-all-chrome": "testcafe chrome ./Tests/tests.js"
+  },
+  "author": "Wizeline",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
