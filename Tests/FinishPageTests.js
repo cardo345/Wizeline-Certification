@@ -9,6 +9,7 @@ import Finishpage from '../Pages/Finishpage'
 fixture('Finish purchase test')
     .page ('https://www.saucedemo.com/')
 
+
 test('User finishes purchase', async t =>{
     await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
     await Productspage.addmultipleproducts()

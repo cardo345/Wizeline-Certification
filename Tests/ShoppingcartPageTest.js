@@ -5,15 +5,16 @@ import Shopingcart from '../Pages/Shopingcart'
 
 fixture('Shoppingcart feature test')
     .page ('https://www.saucedemo.com/')
+    .beforeEach(async t => {
+        await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
+    })
 
 test('User navigates to shopping cart', async t => {
-    await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
     await Productspage.navigateToShopingCart()
     await Shopingcart.validateShoppingCartPage()
 })
 
 test('User adds an item to the cart', async t => {
-    await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
     var backpack = await Productspage.backpackname.innerText
     await Productspage.addBackPack()
     await Productspage.validateRemovebutton()    
@@ -22,7 +23,6 @@ test('User adds an item to the cart', async t => {
 })
 
 test('User adds multiple items to the cart', async t => {
-    await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
     var backpack = await Productspage.backpackname.innerText
     var bikelight = await Productspage.bikelightname.innerText
     var bolttshirt = await Productspage.bolttshirtname.innerText

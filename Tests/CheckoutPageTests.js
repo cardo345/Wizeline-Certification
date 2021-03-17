@@ -7,9 +7,11 @@ import Overviewpage from '../Pages/Overviewpage'
 
 fixture('Checkout feature test')
     .page ('https://www.saucedemo.com/')
+    .beforeEach(async t => {
+        await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
+    })
 
 test('User continues without first name', async t =>{
-    await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
     await Productspage.addmultipleproducts()
     await Productspage.navigateToShopingCart()
     await Shopingcart.checkoutClick()
@@ -24,7 +26,6 @@ test('User continues without first name', async t =>{
 })
 
 test('User fills in personal information and continues to Overview page', async t =>{
-    await Logingpage.submitLogin(CREDENTIALS.VALID_USER.USERNAME, CREDENTIALS.VALID_USER.PASSWORD)
     await Productspage.addmultipleproducts()
     await Productspage.navigateToShopingCart()
     await Shopingcart.checkoutClick()
