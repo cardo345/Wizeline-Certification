@@ -4,11 +4,15 @@
   "description": "Testcafe project",
   "main": "index.js",
   "scripts": {
-    "Test-all-chrome": "testcafe chrome ./Tests/tests.js"
+    "Test-all-chrome": "testcafe chrome Tests/ --reporter html:Reports/chromeTestReport.html",
+    "Test-all-edge": "testcafe edge Tests/ --reporter html:Reports/edgeTestReport.html",
+    "Test-all-firefox": "testcafe firefox Tests/ --reporter html:Reports/firefoxTestReport.html",
+    "Test-all-safari": "testcafe safari Tests/ --reporter html:Reports/safariTestReport.html"
   },
   "author": "Wizeline",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "testcafe-reporter-html": "^1.4.6"
   }
 }

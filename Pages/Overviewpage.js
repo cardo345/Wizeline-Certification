@@ -11,6 +11,15 @@ class Overviewpage{
     async finishcleck(){
         await t.click(this.overviewfinishbtn)
     }
+    async validateOverviewPage(){
+        await t.expect(this.overviewheader.innerText).eql('Checkout: Overview')
+    }
+    async validateItemsInOverviewPage(backpack, bikelight, bolttshirt, fleecejacket){
+        await t.expect(this.overviewlistbackpack.innerText).eql(await backpack)
+        await t.expect(this.overviewlistbikelight.innerText).eql(await bikelight)
+        await t.expect(this.overviewlistbolttshirt.innerText).eql(await bolttshirt)
+        await t.expect(this.overviewlistfleecejacket.innerText).eql(await fleecejacket)
+    }
 }
 
 export default new Overviewpage()

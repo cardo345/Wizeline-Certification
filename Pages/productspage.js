@@ -1,6 +1,6 @@
 import { Selector, t } from 'testcafe'
 
-class productspage{
+class Productspage{
     constructor (){
         this.backpackname = Selector ('.inventory_list div.inventory_item:nth-child(1) .inventory_item_name')
         this.backpackadd = Selector ('.inventory_list div.inventory_item:nth-child(1) button')
@@ -26,20 +26,42 @@ class productspage{
     async logoutClick(){
         await t.click(this.logout)
     }
-    async shoppingcartClick(){
+    async navigateToShopingCart(){
         await t.click(this.shoppingcart)
     }
-    async backpackClick(){
+    async addBackPack(){
         await t.click(this.backpackadd)
-    }async bikelightClick(){
+    }async addBikeLight(){
         await t.click(this.bikelightadd)
     }
-    async bolttshirtClick(){
+    async addBolttShirt(){
         await t.click(this.bolttshirtadd)
     }
-    async fleecejacketClick(){
+    async addFleeceJacket(){
         await t.click(this.fleecejacketadd)
+    }
+    async addmultipleproducts(){
+        await this.addBackPack()
+        await this.addBikeLight()
+        await this.addBolttShirt()
+        await this.addFleeceJacket()
+    }
+    async validatesuccessfullogin(){
+        await t.expect(this.pagetitle.exists).ok()
+    }
+    async userLogout(){
+        await this.menuClick()
+        await this.logoutClick()
+    }
+    async validateRemovebutton(){
+        await t.expect(this.removebackpack.innerText).eql('REMOVE')
+    }
+    async validateRemoveButtons(){
+        await t.expect(this.removebackpack.innerText).eql('REMOVE')    
+        await t.expect(this.removebikelight.innerText).eql('REMOVE')
+        await t.expect(this.removebolttshirt.innerText).eql('REMOVE')
+        await t.expect(this.removefleecejacket.innerText).eql('REMOVE')
     }
 }
 
-export default new productspage()
+export default new Productspage()

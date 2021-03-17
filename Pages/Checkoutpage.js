@@ -1,4 +1,5 @@
 import { Selector, t } from 'testcafe'
+import { CREDENTIALS } from '../Data/Constants'
 
 class Checkoutpage{
     constructor(){
@@ -20,6 +21,20 @@ class Checkoutpage{
     }
     async continueClick(){
         await t.click(this.checkoutcontinuebtn)
+    }
+    async enterUserInfo(){
+        await this.inputfirstname(CREDENTIALS.USER_INFO.FIRSTNAME)
+        await this.inputlastname(CREDENTIALS.USER_INFO.LASTNAME)
+        await this.inputzip(CREDENTIALS.USER_INFO.ZIP)
+    }
+    async validatefirstnameerror(){
+        await t.expect(this.checkouterror.innerText).eql('Error: First Name is required')
+    }
+    async validatelastnameerror(){
+        await t.expect(this.checkouterror.innerText).eql('Error: Last Name is required')
+    }
+    async validateziperror(){
+        await t.expect(this.checkouterror.innerText).eql('Error: Postal Code is required')
     }
 }
 
