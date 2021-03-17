@@ -1,6 +1,6 @@
 # Wizeline-Certification
 - Clone this repository
-    - Navigate to https://github.com/cardo345/Wizeline-Certification.git
+    - Navigate to https://github.com/cardo345/Wizeline-Certification
     - Run the following commands on your terminal:
         - npm init
         - npm install node
